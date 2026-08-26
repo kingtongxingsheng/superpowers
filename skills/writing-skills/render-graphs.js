@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
 /**
- * Render graphviz diagrams from a skill's SKILL.md to SVG files.
+ * 将技能 SKILL.md 中的 Graphviz 流程图渲染为 SVG 文件。
  *
- * Usage:
- *   ./render-graphs.js <skill-directory>           # Render each diagram separately
- *   ./render-graphs.js <skill-directory> --combine # Combine all into one diagram
+ * 用法：
+ *   ./render-graphs.js <skill-directory>           # 分别渲染每个流程图
+ *   ./render-graphs.js <skill-directory> --combine # 合并为一个流程图
  *
- * Extracts all ```dot blocks from SKILL.md and renders to SVG.
- * Useful for helping your human partner visualize the process flows.
+ * 提取 SKILL.md 中全部 ```dot 代码块并渲染为 SVG。
+ * 用于帮助 human partner 直观看到流程。
  *
- * Requires: graphviz (dot) installed on system
+ * 要求：系统已安装 Graphviz（dot）
  */
 
 import * as fs from 'fs';
@@ -25,7 +25,7 @@ function extractDotBlocks(markdown) {
   while ((match = regex.exec(markdown)) !== null) {
     const content = match[1].trim();
 
-    // Extract digraph name
+    // 提取 digraph 名称
     const nameMatch = content.match(/digraph\s+(\w+)/);
     const name = nameMatch ? nameMatch[1] : `graph_${blocks.length + 1}`;
 
@@ -36,7 +36,7 @@ function extractDotBlocks(markdown) {
 }
 
 function extractGraphBody(dotContent) {
-  // Extract just the body (nodes and edges) from a digraph
+  // 仅提取 digraph 的主体（节点和边）
   const match = dotContent.match(/digraph\s+\w+\s*\{([\s\S]*)\}/);
   if (!match) return '';
 
@@ -51,7 +51,7 @@ function extractGraphBody(dotContent) {
 function combineGraphs(blocks, skillName) {
   const bodies = blocks.map((block, i) => {
     const body = extractGraphBody(block.content);
-    // Wrap each subgraph in a cluster for visual grouping
+    // 将每个子图放入 cluster，便于视觉分组
     return `  subgraph cluster_${i} {
     label="${block.name}";
     ${body.split('\n').map(line => '  ' + line).join('\n')}
@@ -75,7 +75,7 @@ function renderToSvg(dotContent) {
       maxBuffer: 10 * 1024 * 1024
     });
   } catch (err) {
-    console.error('Error running dot:', err.message);
+    console.error('运行 dot 时出错：', err.message);
     if (err.stderr) console.error(err.stderr.toString());
     return null;
   }
@@ -93,8 +93,8 @@ function main() {
     console.error('  --combine    Combine all diagrams into one SVG');
     console.error('');
     console.error('Example:');
-    console.error('  ./render-graphs.js ../subagent-driven-development');
-    console.error('  ./render-graphs.js ../subagent-driven-development --combine');
+    console.error('  ./render-graphs.js ../writing-plans');
+    console.error('  ./render-graphs.js ../writing-plans --combine');
     process.exit(1);
   }
 
@@ -134,7 +134,7 @@ function main() {
   }
 
   if (combine) {
-    // Combine all graphs into one
+    // 将所有流程图合并为一个
     const combined = combineGraphs(blocks, skillName);
     const svg = renderToSvg(combined);
     if (svg) {

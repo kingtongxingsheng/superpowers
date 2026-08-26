@@ -1,250 +1,207 @@
 ---
 name: brainstorming
-description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+description: "在进行任何创意工作——创建功能、构建组件、添加能力或修改行为——之前必须使用。用于在实施前探索用户意图、需求和设计。"
 ---
 
-# Brainstorming Ideas Into Designs
+# 将想法转化为设计
 
-Help turn ideas into fully formed designs and specs through natural collaborative dialogue.
+通过自然、协作式对话，帮助把想法转化为完整的设计和规格说明。
 
-Start by classifying how much process the request needs, then work
-through your path: understand the context, refine the idea, present a
-design, and get your human partner's approval.
+先判断请求需要多少流程，再沿着相应路径推进：理解上下文、细化想法、展示设计，并获得 human partner 的批准。
 
 <HARD-GATE>
-Do NOT invoke any implementation skill, write any code, scaffold any
-project, or take any implementation action until you have told your
-human partner what you intend and they have approved it. This applies
-to EVERY task on EVERY path below — the ceremony scales with the task;
-the approval gate never does.
+在告诉 human partner 你的意图并获得批准之前，不得调用任何实施技能、编写代码、搭建项目或采取任何实施行动。这适用于下面的每一条路径、每一项任务——流程仪式会随任务规模调整，但批准门永远存在。
 </HARD-GATE>
 
-## Three Paths
+## 三条路径
 
-Before your first question, classify the request and say the
-classification out loud — "this looks bounded, so I'll present a short
-design here rather than write a spec" — so your human partner can
-override it:
+在提出第一个问题前，先对请求分类并大声说明分类——“这看起来范围明确，所以我会在这里展示一个简短设计，而不是写规格说明”——让 human partner 可以纠正你的判断：
 
-- **Spike** — a feasibility question ("can we...", "is it possible...",
-  "quick and dirty is fine") whose output is an answer, not code you
-  keep. Present the question and what you'll try in 2-3 sentences, get
-  a nod, then find out as cheaply as correctness allows. No design
-  doc, no spec file. Report findings as a recommendation; anything you
-  built stays labeled throwaway.
-- **Bounded** — a well-scoped change to code that already exists in
-  this repo: a new flag, a small endpoint, a one-file fix.
-  Understanding the kind of app is not enough — bounded means the flow
-  you are changing is already here to read. If there is no existing
-  flow to change, the task is not bounded. Ask the clarifying
-  questions that matter, present a short design IN CHAT (a few
-  sentences to a few short paragraphs), and STOP. Implementation
-  starts only after your human partner says yes to that design — a
-  bounded task's approval is as hard a gate as an architectural
-  one. No spec file, no implementation plan document.
-- **Architectural** — new projects, new subsystems, changes that
-  restructure how components fit together or alter interfaces others
-  depend on. Follow the full process: questions, approaches, sectioned
-  design, written spec, then the writing-plans skill.
+- **Spike**——可行性问题（“我们能不能……”“是否可能……”“快速粗略地做就行”），其输出是答案，而不是要保留的代码。用 2-3 句话说明问题和尝试方式，得到同意后，再在正确性允许的前提下以最低成本查明结果。不写设计文档、不写规格文件。将发现作为建议报告；任何构建内容都标记为一次性试验。
+- **Bounded**——对本仓库已有代码的范围明确的修改：新增 flag、小型 endpoint、单文件修复。仅仅理解应用类型还不够——bounded 意味着要修改的流程已经存在于此、可以阅读。如果不存在可修改的既有流程，则不属于 bounded。提出重要的澄清问题，在聊天中展示简短设计（几句话到几段短文），然后停止。只有 human partner 对设计说“是”后才能开始实施——bounded 任务的批准门和架构任务一样严格。不写规格文件，不写实施计划文档。
+- **Architectural**——新项目、新子系统、重构组件协作方式的变化，或会改变其他方依赖的接口。遵循完整流程：提问、提供方案、分节展示设计、编写规格说明，然后使用 writing-plans 技能。
 
-When in doubt between two paths, take the heavier one. The ratchet is
-one-way: hidden complexity discovered mid-task upgrades the path —
-stop, say so, and step up. Nothing downgrades mid-task.
+如果无法在两条路径之间判断，选择更重的路径。这个棘轮只能向上：任务中途发现隐藏复杂度时升级路径——停下来说明并升级。任务中途不能降级。
 
-## Anti-Pattern: "Too Simple To Need Approval"
+## 反模式：“太简单，不需要批准”
 
-Every path ends with your human partner approving your intent before
-implementation. A todo list, a single-function utility, a config
-change — the design may be two sentences in chat, but you MUST present
-it and get approval. "Simple" tasks are where unexamined assumptions
-cause the most wasted work. What scales with simplicity is the
-artifact, never the approval.
+每条路径都必须在实施前获得 human partner 对意图的批准。待办列表、单函数工具、配置修改——设计可以只是聊天中的两句话，但仍然必须展示并获得批准。未经检查的假设最容易在“简单”任务中造成浪费。随简单程度缩短的是产物，绝不是批准步骤。
 
-## Red Flags
+## 红旗
 
-| Thought | Reality |
+| 想法 | 事实 |
 |---------|---------|
-| "This is too simple to need a design" | Simple means a short design, not no design. Two sentences in chat, then approval. |
-| "I'll call it bounded and skip the spec" | Reaching for a label to skip work IS the doubt — take the heavier path. |
-| "It's bounded and the design is obvious — I'll start while they read it" | The gate is the approval, not the design's length. Present, then stop until you hear yes. |
-| "I understand this kind of app, so it's bounded" | Bounded measures the repo, not your familiarity. A new project has no existing flow — it is architectural. |
-| "The spike works, so I'll keep the code" | A spike's output is an answer. Keeping the code is a new request — classify it. |
-| "It grew, but I'm almost done — no need to re-classify" | Hidden complexity upgrades the path mid-task. Stop and say so. |
-| "They approved the spike, so the follow-up change is approved too" | Each task gets its own classification and its own approval. |
+| “这太简单了，不需要设计。” | 简单意味着设计简短，而不是没有设计。先在聊天中写两句话，再请求批准。 |
+| “我把它称为 bounded，就可以跳过规格。” | 试图用标签跳过工作本身就是疑点——选择更重的路径。 |
+| “它是 bounded，而且设计显而易见——他们阅读时我先开始。” | 门槛是批准，而不是设计长度。展示后必须停下，直到收到 yes。 |
+| “我熟悉这种应用，所以它是 bounded。” | bounded 衡量的是仓库，而不是你的熟悉程度。新项目没有既有流程，属于 architectural。 |
+| “Spike 能运行，所以我保留代码。” | Spike 的输出是答案。保留代码是新的请求——重新分类。 |
+| “它变复杂了，但我快做完了——没必要重新分类。” | 隐藏复杂度会在任务中途升级路径。停下来并说明。 |
+| “他们批准了 spike，所以后续修改也获批了。” | 每项任务都有自己的分类和批准。 |
 
-## Checklist
+## 清单
 
-Classify first, announce the path, then create a task for each item on
-your path and complete them in order.
+先分类并宣布路径，然后为路径上的每项创建任务，并按顺序完成。
 
-**Spike:**
-1. **Explore project context** — enough to frame the probe
-2. **Present question + probe plan** — 2-3 sentences
-3. **Get approval** — a nod is enough
-4. **Investigate** — as cheaply as correctness allows
-5. **Report findings** — a recommendation; label anything built as throwaway
+**Spike：**
+1. **探索项目上下文**——收集足以界定探查范围的信息
+2. **展示问题和探查计划**——2-3 句话
+3. **获得批准**——同意即可
+4. **调查**——在正确性允许的前提下以最低成本进行
+5. **报告发现**——给出建议；将任何构建内容标记为一次性试验
 
-**Bounded:**
-1. **Explore project context** — check files, docs, recent commits
-2. **Ask clarifying questions** — one at a time, the ones that matter
-3. **Present short design in chat** — approach, files touched, testing
-4. **Get approval** — STOP and wait for an explicit yes; presenting the design and starting in the same breath is skipping the gate
-5. **Implement** — proceed with the normal development workflow (TDD applies); no plan document
+**Bounded：**
+1. **探索项目上下文**——检查文件、文档和最近提交
+2. **提出澄清问题**——一次一个，只问重要的问题
+3. **在聊天中展示简短设计**——方案、涉及文件和测试
+4. **获得批准**——停止并等待明确的 yes；展示设计后立即开始等于跳过门槛
+5. **实施**——通过正常开发流程继续（适用 TDD）；不写计划文档
 
-**Architectural:**
-1. **Explore project context** — check files, docs, recent commits
-2. **Offer the visual companion just-in-time** — NOT upfront. The first time a question would genuinely be clearer shown than described, offer it then (its own message); on approval its browser tab opens for you. If no visual question ever arises, never offer it. See the Visual Companion section below.
-3. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
-4. **Propose 2-3 approaches** — with trade-offs and your recommendation
-5. **Present design** — in sections scaled to their complexity, get user approval after each section
-6. **Write design doc** — save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and commit
-7. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope (see below)
-8. **User reviews written spec** — ask user to review the spec file before proceeding
-9. **Transition to implementation** — invoke writing-plans skill to create implementation plan
+**Architectural：**
+1. **探索项目上下文**——检查文件、文档和最近提交
+2. **在需要时提供 visual companion**——不要提前提供。第一次遇到“展示比描述更清晰”的问题时再提供（单独发消息）；批准后浏览器标签页会为你打开。如果从未出现视觉问题，就永远不要提供。见下方 Visual Companion 部分。
+3. **提出澄清问题**——一次一个，理解目的、约束和成功标准
+4. **提出 2-3 种方案**——说明权衡并给出你的建议
+5. **展示设计**——按复杂度分节，在每节之后获得用户批准
+6. **写设计文档**——保存到 `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` 并提交
+7. **规格自审**——快速检查占位符、矛盾、歧义和范围（见下文）
+8. **用户审阅书面规格**——在继续之前请用户审阅规格文件
+9. **转入实施**——调用 writing-plans 技能创建实施计划
 
-## Process Flow
+## 流程图
 
 ```dot
 digraph brainstorming {
-    "Classify: spike / bounded / architectural" [shape=diamond];
-    "Present question + probe (2-3 sentences)" [shape=box];
-    "Ask clarifying questions (bounded)" [shape=box];
-    "Present short design in chat" [shape=box];
-    "Human approves?" [shape=diamond];
-    "Investigate; report recommendation" [shape=doublecircle];
-    "Implement via normal workflow (no plan doc)" [shape=doublecircle];
-    "Explore project context" [shape=box];
-    "Ask clarifying questions" [shape=box];
-    "Propose 2-3 approaches" [shape=box];
-    "Present design sections" [shape=box];
-    "User approves design?" [shape=diamond];
-    "Write design doc" [shape=box];
-    "Spec self-review\n(fix inline)" [shape=box];
-    "User reviews spec?" [shape=diamond];
-    "Invoke writing-plans skill" [shape=doublecircle];
-    "Hidden complexity? Upgrade path" [shape=box];
+    "分类：spike / bounded / architectural" [shape=diamond];
+    "展示问题和探查（2-3 句话）" [shape=box];
+    "提出澄清问题（bounded）" [shape=box];
+    "在聊天中展示简短设计" [shape=box];
+    "human partner 批准了吗？" [shape=diamond];
+    "调查并报告建议" [shape=doublecircle];
+    "通过正常流程实施（无计划文档）" [shape=doublecircle];
+    "探索项目上下文" [shape=box];
+    "提出澄清问题" [shape=box];
+    "提出 2-3 种方案" [shape=box];
+    "展示设计分节" [shape=box];
+    "用户批准设计了吗？" [shape=diamond];
+    "编写设计文档" [shape=box];
+    "规格自审\n（直接修复）" [shape=box];
+    "用户审阅规格了吗？" [shape=diamond];
+    "调用 writing-plans 技能" [shape=doublecircle];
+    "发现隐藏复杂度？升级路径" [shape=box];
 
-    "Classify: spike / bounded / architectural" -> "Present question + probe (2-3 sentences)" [label="spike"];
-    "Classify: spike / bounded / architectural" -> "Ask clarifying questions (bounded)" [label="bounded"];
-    "Classify: spike / bounded / architectural" -> "Explore project context" [label="architectural"];
-    "Present question + probe (2-3 sentences)" -> "Human approves?";
-    "Ask clarifying questions (bounded)" -> "Present short design in chat";
-    "Present short design in chat" -> "Human approves?";
-    "Human approves?" -> "Investigate; report recommendation" [label="spike: yes"];
-    "Human approves?" -> "Implement via normal workflow (no plan doc)" [label="bounded: yes"];
-    "Hidden complexity? Upgrade path" -> "Classify: spike / bounded / architectural";
-    "Explore project context" -> "Ask clarifying questions";
-    "Ask clarifying questions" -> "Propose 2-3 approaches";
-    "Propose 2-3 approaches" -> "Present design sections";
-    "Present design sections" -> "User approves design?";
-    "User approves design?" -> "Present design sections" [label="no, revise"];
-    "User approves design?" -> "Write design doc" [label="yes"];
-    "Write design doc" -> "Spec self-review\n(fix inline)";
-    "Spec self-review\n(fix inline)" -> "User reviews spec?";
-    "User reviews spec?" -> "Write design doc" [label="changes requested"];
-    "User reviews spec?" -> "Invoke writing-plans skill" [label="approved"];
+    "分类：spike / bounded / architectural" -> "展示问题和探查（2-3 句话）" [label="spike"];
+    "分类：spike / bounded / architectural" -> "提出澄清问题（bounded）" [label="bounded"];
+    "分类：spike / bounded / architectural" -> "探索项目上下文" [label="architectural"];
+    "展示问题和探查（2-3 句话）" -> "human partner 批准了吗？";
+    "提出澄清问题（bounded）" -> "在聊天中展示简短设计";
+    "在聊天中展示简短设计" -> "human partner 批准了吗？";
+    "human partner 批准了吗？" -> "调查并报告建议" [label="spike：是"];
+    "human partner 批准了吗？" -> "通过正常流程实施（无计划文档）" [label="bounded：是"];
+    "发现隐藏复杂度？升级路径" -> "分类：spike / bounded / architectural";
+    "探索项目上下文" -> "提出澄清问题";
+    "提出澄清问题" -> "提出 2-3 种方案";
+    "提出 2-3 种方案" -> "展示设计分节";
+    "展示设计分节" -> "用户批准设计了吗？";
+    "用户批准设计了吗？" -> "展示设计分节" [label="否，修改"];
+    "用户批准设计了吗？" -> "编写设计文档" [label="是"];
+    "编写设计文档" -> "规格自审\n（直接修复）";
+    "规格自审\n（直接修复）" -> "用户审阅规格了吗？";
+    "用户审阅规格了吗？" -> "编写设计文档" [label="要求修改"];
+    "用户审阅规格了吗？" -> "调用 writing-plans 技能" [label="已批准"];
 }
 ```
 
-**Terminal states are path-bound.** Architectural: the ONLY skill you
-invoke after brainstorming is writing-plans — never frontend-design,
-mcp-builder, or any other implementation skill. Bounded: after
-approval, implementation proceeds directly through the normal
-development workflow; no plan document. Spike: the terminal state is a
-reported recommendation.
+**终止状态绑定路径。**Architectural：头脑风暴之后唯一可以调用的技能是 writing-plans——绝不能调用 frontend-design、mcp-builder 或其他实施技能。Bounded：批准后直接通过正常开发流程实施，不写计划文档。Spike：终止状态是报告建议。
 
-## The Process
+## 流程
 
-The subsections below serve the bounded and architectural paths (a
-spike stops at "present the probe, get a nod"). Sections from
-**Exploring approaches** onward are architectural-path depth — for
-bounded work, context plus a few questions plus a short in-chat design
-is the whole process.
+以下小节服务于 bounded 和 architectural 路径（spike 会在“展示探查并获得同意”处停止）。从**探索方案**开始的部分是 architectural 路径的深度内容；对于 bounded 工作，项目上下文、几个问题和聊天中的简短设计就是完整流程。
 
-**Understanding the idea:**
+**理解想法：**
 
-- Check out the current project state first (files, docs, recent commits)
-- Before asking detailed questions, assess scope: if the request describes multiple independent subsystems (e.g., "build a platform with chat, file storage, billing, and analytics"), flag this immediately. Don't spend questions refining details of a project that needs to be decomposed first.
-- If the project is too large for a single spec, help the user decompose into sub-projects: what are the independent pieces, how do they relate, what order should they be built? Then brainstorm the first sub-project through the normal design flow. Each sub-project gets its own spec → plan → implementation cycle.
-- For appropriately-scoped projects, ask questions one at a time to refine the idea
-- Prefer multiple choice questions when possible, but open-ended is fine too
-- Only one question per message - if a topic needs more exploration, break it into multiple questions
-- Focus on understanding: purpose, constraints, success criteria
+- 先检查当前项目状态（文件、文档、最近提交）
+- 提出详细问题前先评估范围：如果请求描述了多个独立子系统（例如“构建一个包含聊天、文件存储、计费和分析的平台”），立即指出。不要花时间细化一个需要先拆分的项目。
+- 如果项目对单份规格而言过大，帮助用户拆分为子项目：哪些部分彼此独立、如何关联、按什么顺序构建？然后按正常设计流程对第一个子项目进行头脑风暴。每个子项目各自经历规格 → 计划 → 实施周期。
+- 对于范围合适的项目，一次一个问题地细化想法
+- 尽可能使用多选题，但也可以开放式提问
+- 每条消息只问一个问题——如果一个主题需要更多探索，就拆成多条消息
+- 聚焦于理解：目的、约束、成功标准
 
-**Exploring approaches:**
+**探索方案：**
 
-- Propose 2-3 different approaches with trade-offs
-- Present options conversationally with your recommendation and reasoning
-- Lead with your recommended option and explain why
-- YAGNI ruthlessly - remove unnecessary features from every approach and design
+- 提出 2-3 种不同方案并说明权衡
+- 以对话方式展示选项，同时给出建议和理由
+- 先给出推荐方案并解释原因
+- 严格遵循 YAGNI——从每个方案和设计中移除不必要功能
 
-**Presenting the design:**
+**展示设计：**
 
-- Once you believe you understand what you're building, present the design
-- Scale each section to its complexity: a few sentences if straightforward, up to 200-300 words if nuanced
-- Ask after each section whether it looks right so far
-- Cover: architecture, components, data flow, error handling, testing
-- Be ready to go back and clarify if something doesn't make sense
+- 确信理解要构建的内容后，再展示设计
+- 按复杂度调整每节长度：直接的问题写几句话，细微的问题可写 200-300 字
+- 每节之后询问目前是否正确
+- 覆盖：架构、组件、数据流、错误处理和测试
+- 如果某处没有意义，要准备回去继续澄清
 
-**Design for isolation and clarity:**
+**为隔离和清晰而设计：**
 
-- Break the system into smaller units that each have one clear purpose, communicate through well-defined interfaces, and can be understood and tested independently
-- For each unit, you should be able to answer: what does it do, how do you use it, and what does it depend on?
-- Can someone understand what a unit does without reading its internals? Can you change the internals without breaking consumers? If not, the boundaries need work.
-- Smaller, well-bounded units are also easier for you to work with - you reason better about code you can hold in context at once, and your edits are more reliable when files are focused. When a file grows large, that's often a signal that it's doing too much.
+- 将系统拆成更小的单元，每个单元只有一个清晰目的，通过定义良好的接口通信，并能独立理解和测试
+- 对每个单元都应能回答：它做什么、如何使用、依赖什么？
+- 不阅读内部实现，能理解单元做什么吗？可以在不破坏消费者的情况下修改内部实现吗？如果不能，边界就需要调整。
+- 更小且边界清晰的单元也更容易处理——一次能放进上下文的代码越少，推理越可靠；文件聚焦时编辑也更可靠。文件变大通常说明它承担了过多职责。
 
-**Working in existing codebases:**
+**在已有代码库中工作：**
 
-- Explore the current structure before proposing changes. Follow existing patterns.
-- Where existing code has problems that affect the work (e.g., a file that's grown too large, unclear boundaries, tangled responsibilities), include targeted improvements as part of the design - the way a good developer improves code they're working in.
-- Don't propose unrelated refactoring. Stay focused on what serves the current goal.
+- 提出修改前先探索当前结构，遵循既有模式
+- 如果现有代码的问题会影响当前工作（例如文件过大、边界不清、职责纠缠），将有针对性的改进纳入设计——优秀开发者会改进自己正在处理的代码
+- 不要提出无关重构。始终聚焦于服务当前目标的内容
 
-## After the Design (architectural path)
+## 设计之后（architectural 路径）
 
-**Documentation:**
+**文档：**
 
-- Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
-  - (User preferences for spec location override this default)
-- Use elements-of-style:writing-clearly-and-concisely skill if available
-- Commit the design document to git
+- 将已验证的设计（规格）写入 `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
+  -（用户对规格位置的偏好优先于此默认值）
+- 如可用，使用 elements-of-style:writing-clearly-and-concisely 技能
+- 将设计文档提交到 git
 
-**Spec Self-Review:**
-After writing the spec document, look at it with fresh eyes:
+**规格自审：**
+写完规格文档后，用全新的视角检查：
 
-1. **Placeholder scan:** Any "TBD", "TODO", incomplete sections, or vague requirements? Fix them.
-2. **Internal consistency:** Do any sections contradict each other? Does the architecture match the feature descriptions?
-3. **Scope check:** Is this focused enough for a single implementation plan, or does it need decomposition?
-4. **Ambiguity check:** Could any requirement be interpreted two different ways? If so, pick one and make it explicit.
+1. **占位符扫描：**是否存在“​​TBD”“TODO”、不完整章节或模糊要求？修复它们。
+2. **内部一致性：**是否有章节互相矛盾？架构是否与功能描述一致？
+3. **范围检查：**是否足够聚焦、能由单个实施计划完成，还是需要拆分？
+4. **歧义检查：**某项要求是否可能有两种解释？如果是，选择一种并明确写出。
 
-Fix any issues inline. No need to re-review — just fix and move on.
+直接修复发现的问题。不需要重新审查，修好后继续。
 
-**User Review Gate:**
-After the spec review loop passes, ask the user to review the written spec before proceeding:
+**用户审阅门槛：**
+规格自审循环通过后，请用户在继续前审阅书面规格：
 
-> "Spec written and committed to `<path>`. Please review it and let me know if you want to make any changes before we start writing out the implementation plan."
+> “规格已写入并提交到 `<path>`。请审阅它，并在我们开始编写实施计划前告诉我是否需要修改。”
 
-Wait for the user's response. If they request changes, make them and re-run the spec review loop. Only proceed once the user approves.
+等待用户回复。如果要求修改，完成修改并重新运行规格自审循环。只有用户批准后才能继续。
 
-**Implementation:**
+**实施：**
 
-- Invoke the writing-plans skill to create a detailed implementation plan
-- Do NOT invoke any other skill. writing-plans is the next step.
+- 调用 writing-plans 技能创建详细实施计划
+- 不要调用其他技能。writing-plans 是下一步。
 
 ## Visual Companion
 
-A browser-based companion for showing mockups, diagrams, and visual options during brainstorming. Available as a tool — not a mode. Accepting the companion means it's available for questions that benefit from visual treatment; it does NOT mean every question goes through the browser.
+这是一个基于浏览器的伴侣工具，用于在头脑风暴期间展示 mockup、图表和视觉选项。它是一个工具，而不是一种模式。接受 companion 只意味着它可用于适合视觉呈现的问题，并不意味着每个问题都要通过浏览器处理。
 
-**Offering the companion (just-in-time):** Do NOT offer it upfront. Wait until a question would genuinely be clearer shown than told — a real mockup / layout / diagram question, not merely a UI *topic*. The first time that happens, offer it then, as its own message:
-> "This next part might be easier if I show you — I can put together mockups, diagrams, and comparisons in a browser tab as we go. It's still new and can be token-intensive. Want me to? I'll open it for you."
+**及时提供 companion：**不要提前提供。等到某个问题确实“展示比描述更清楚”时再提供——必须是实际的 mockup、布局或图表问题，而不只是一个 UI 主题。第一次出现这种问题时，以单独消息提供：
+> “下一部分展示出来可能更容易——我可以在浏览器标签页中逐步展示 mockup、图表和对比。这个工具还比较新，而且可能消耗较多 token。需要我使用吗？我会为你打开。”
 
-**This offer MUST be its own message.** Only the offer — no clarifying question, summary, or other content. Wait for the user's response. If they accept, start the server with `--open` so their browser opens to the first screen automatically. If they decline, continue text-only and don't offer again unless they raise it.
+**这条邀请必须单独成消息。**只能包含邀请，不得附带澄清问题、总结或其他内容。等待用户回复。用户接受后，使用 `--open` 启动服务器，让浏览器自动打开第一个界面。用户拒绝后继续纯文本，不要再次提供，除非他们主动提出。
 
-**Per-question decision:** Even after the user accepts, decide FOR EACH QUESTION whether to use the browser or the terminal. The test: **would the user understand this better by seeing it than reading it?**
+**逐问题决策：**即使用户接受了 companion，也要为**每个问题**决定使用浏览器还是终端。判断标准：**用户通过看到它，是否会比阅读文字理解得更好？**
 
-- **Use the browser** for content that IS visual — mockups, wireframes, layout comparisons, architecture diagrams, side-by-side visual designs
-- **Use the terminal** for content that is text — requirements questions, conceptual choices, tradeoff lists, A/B/C/D text options, scope decisions
+- **使用浏览器：**本身就是视觉内容的 mockup、wireframe、布局对比、架构图、并排视觉设计
+- **使用终端：**文本内容，如需求问题、概念选择、权衡列表、A/B/C/D 文字选项和范围决策
 
-A question about a UI topic is not automatically a visual question. "What does personality mean in this context?" is a conceptual question — use the terminal. "Which wizard layout works better?" is a visual question — use the browser.
+关于 UI 主题的问题不自动等于视觉问题。“这里的 personality 是什么意思？”是概念问题，应使用终端；“哪个向导布局更好？”是视觉问题，应使用浏览器。
 
-If they agree to the companion, read the detailed guide before proceeding:
+如果他们同意使用 companion，继续前先阅读详细指南：
 `skills/brainstorming/visual-companion.md`

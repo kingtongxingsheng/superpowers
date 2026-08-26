@@ -1,20 +1,20 @@
-// Complete implementation of condition-based waiting utilities
-// From: Lace test infrastructure improvements (2025-10-03)
-// Context: Fixed 15 flaky tests by replacing arbitrary timeouts
+// 基于条件的等待工具完整实现
+// 来源：Lace 测试基础设施改进（2025-10-03）
+// 上下文：通过替换任意超时修复了 15 个不稳定测试
 
 import type { ThreadManager } from '~/threads/thread-manager';
 import type { LaceEvent, LaceEventType } from '~/threads/types';
 
 /**
- * Wait for a specific event type to appear in thread
+ * 等待 thread 中出现指定事件类型
  *
- * @param threadManager - The thread manager to query
- * @param threadId - Thread to check for events
- * @param eventType - Type of event to wait for
- * @param timeoutMs - Maximum time to wait (default 5000ms)
- * @returns Promise resolving to the first matching event
+ * @param threadManager - 要查询的 thread manager
+ * @param threadId - 要检查事件的 thread
+ * @param eventType - 要等待的事件类型
+ * @param timeoutMs - 最大等待时间（默认 5000ms）
+ * @returns 解析为第一个匹配事件的 Promise
  *
- * Example:
+ * 示例：
  *   await waitForEvent(threadManager, agentThreadId, 'TOOL_RESULT');
  */
 export function waitForEvent(
