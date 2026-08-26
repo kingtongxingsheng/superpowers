@@ -1,11 +1,11 @@
 # 代码审查者提示词模板
 
-派遣代码审查子代理时使用此模板。
+整理审查上下文并直接执行代码审查时使用此模板。
 
 **目的：**在问题扩散成更多工作之前，根据要求和代码质量标准审查已完成的工作。
 
 ```
-Subagent (general-purpose):
+代码审查者：
   description: "Review code changes"
   prompt: |
     你是一名资深代码审查者，擅长软件架构、设计模式和最佳实践。你的任务是根据计划或要求审查已完成的工作，并在问题扩散前识别它们。
@@ -30,11 +30,7 @@ Subagent (general-purpose):
 
     ## 只读审查
 
-    你的审查在此 checkout 中是只读的。不要以任何方式修改工作树、索引、HEAD 或分支状态。使用 `git show`、`git diff` 和 `git log` 等工具检查历史。如果需要其他版本的工作副本，将其 checkout 到独立的临时目录（例如 `git worktree add /tmp/review-[SHA] [SHA]`）——绝不要在此 checkout 上移动 HEAD。
-
-    ## 不要派遣子代理
-
-    由你独立完成整个审查。绝不要派遣子代理审查 diff 的一部分，也绝不要再派遣另一名审查者获取第二意见。此流程已经提供了全部审查席位；派遣的审查者会以完整成本重复工作，且其结论不会计入本次结果。如果 diff 太大，无法一遍完成，请分多个阶段自行审查并在报告中说明。
+    你的审查必须保持只读。不要修改工作树、索引、HEAD 或分支状态。使用 `git show`、`git diff` 和 `git log` 等工具检查历史。如果需要其他版本的工作副本，将其 checkout 到独立的临时目录（例如 `git worktree add /tmp/review-[SHA] [SHA]`）——绝不要在当前 checkout 上移动 HEAD。
 
     ## 检查内容
 
@@ -128,42 +124,4 @@ Subagent (general-purpose):
 - `[BASE_SHA]`——起始提交
 - `[HEAD_SHA]`——结束提交
 
-**审查者返回：**Strengths、Issues（Critical / Important / Minor）、Recommendations、Assessment
-
-## 输出示例
-
-```
-### 优点
-- 数据库 schema 清晰，迁移正确（db.ts:15-42）
-- 测试覆盖全面（18 个测试，包含所有边界情况）
-- 错误处理良好，包含 fallback（summarizer.ts:85-92）
-
-### 问题
-
-#### Important
-1. **CLI wrapper 缺少帮助文本**
-   - 文件：index-conversations:1-31
-   - 问题：没有 --help flag，用户无法发现 --concurrency
-   - 修复：增加带用法示例的 --help 分支
-
-2. **缺少日期验证**
-   - 文件：search.ts:25-27
-   - 问题：无效日期会静默返回空结果
-   - 修复：验证 ISO 格式，并用示例抛出错误
-
-#### Minor
-1. **进度指示器**
-   - 文件：indexer.ts:130
-   - 问题：长时间操作没有“X of Y”计数器
-   - 影响：用户不知道需要等待多久
-
-### 建议
-- 增加进度报告，改善用户体验
-- 考虑为排除项目增加配置文件（提高可移植性）
-
-### 评估
-
-**可以合并吗？With fixes**
-
-**理由：**核心实现扎实，架构和测试良好。重要问题（帮助文本、日期验证）容易修复，且不影响核心功能。
-```
+**返回内容：**优点、问题（Critical / Important / Minor）、建议、评估
