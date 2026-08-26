@@ -16,7 +16,7 @@ description: 当你有一份需要在独立会话中执行、并包含审查检�
 ## 流程
 
 ### 第一步：加载并审查计划
-1. 确保工作区隔离：使用 superpowers:using-git-worktrees 创建工作区，或确认当前工作区已经隔离
+1. 确保工作区隔离：使用 superpowers-cn:using-git-worktrees 创建工作区，或确认当前工作区已经隔离
 2. 读取计划文件
 3. 批判性审查——识别计划中的问题或疑虑
 4. 如果存在疑虑：在开始前向你的 human partner 提出
@@ -34,7 +34,7 @@ description: 当你有一份需要在独立会话中执行、并包含审查检�
 
 所有任务完成并通过验证后：
 - 宣布：“我正在使用 finishing-a-development-branch 技能来完成这项工作。”
-- **必需子技能：**使用 superpowers:finishing-a-development-branch
+- **必需子技能：**使用 superpowers-cn:finishing-a-development-branch
 - 遵循该技能进行测试、展示选项并执行所选操作
 
 ## 何时停止并寻求帮助

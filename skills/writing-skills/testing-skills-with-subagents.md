@@ -10,7 +10,7 @@
 
 **核心原则：** 如果没有观察过 agent 在没有技能时失败，就不知道技能是否阻止了正确的失败。
 
-**必须具备的背景：** 使用本技能前必须理解 `superpowers:test-driven-development`。该技能定义 RED-GREEN-REFACTOR 循环；本文件提供面向技能的测试格式（压力场景、合理化表格）。
+**必须具备的背景：** 使用本技能前必须理解 `superpowers-cn:test-driven-development`。该技能定义 RED-GREEN-REFACTOR 循环；本文件提供面向技能的测试格式（压力场景、合理化表格）。
 
 **完整示例：** 参见 `examples/CLAUDE_MD_TESTING.md`，其中包含针对 `CLAUDE.md` 文档变体的完整测试活动。
 

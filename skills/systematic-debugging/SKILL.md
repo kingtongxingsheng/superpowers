@@ -174,7 +174,7 @@ description: 遇到任何 bug、测试失败或异常行为时，在提出修复
    - 可以时使用自动化测试
    - 没有框架时使用一次性测试脚本
    - 修复前必须存在
-   - 使用 `superpowers:test-driven-development` 技能编写正确的失败测试
+   - 使用 `superpowers-cn:test-driven-development` 技能编写正确的失败测试
 
 2. **实施单一修复**
    - 处理已识别的根因
@@ -186,7 +186,7 @@ description: 遇到任何 bug、测试失败或异常行为时，在提出修复
    - 现在测试通过了吗？
    - 其他测试没有损坏吗？
    - 问题真的解决了吗？
-   - 声称成功前使用 `superpowers:verification-before-completion` 技能
+   - 声称成功前使用 `superpowers-cn:verification-before-completion` 技能
 
 4. **修复无效时**
    - 停止

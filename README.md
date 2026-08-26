@@ -52,30 +52,18 @@ Superpowers 是一套面向 coding agent 的完整软件开发方法论，建立
 
 ### Claude Code
 
-Superpowers 可通过 [Claude 官方插件市场](https://claude.com/plugins/superpowers)获取。
+从当前 fork 注册并安装 Superpowers：
 
-#### 官方市场
+- 注册 fork 自带的插件市场：
 
-- 从 Anthropic 官方市场安装插件：
-
-  ```bash
-  /plugin install superpowers@claude-plugins-official
+  ```text
+  /plugin marketplace add kingtongxingsheng/superpowers
   ```
 
-#### Superpowers 市场
+- 安装 fork 版本：
 
-Superpowers 市场为 Claude Code 提供 Superpowers 及其他相关插件。
-
-- 注册市场：
-
-  ```bash
-  /plugin marketplace add obra/superpowers-marketplace
-  ```
-
-- 从该市场安装插件：
-
-  ```bash
-  /plugin install superpowers@superpowers-marketplace
+  ```text
+  /plugin install superpowers-cn@superpowers-dev
   ```
 
 ### Antigravity
@@ -83,53 +71,29 @@ Superpowers 市场为 Claude Code 提供 Superpowers 及其他相关插件。
 从本仓库安装 Superpowers 插件：
 
 ```bash
-agy plugin install https://github.com/obra/superpowers
+agy plugin install https://github.com/kingtongxingsheng/superpowers
 ```
 
 Antigravity 会运行插件的 session-start hook，因此 Superpowers 从第一条消息开始就处于可用状态。更新时使用相同命令重新安装。
 
 ### Codex App
 
-Superpowers 可通过 [Codex 官方插件市场](https://github.com/openai/plugins)获取。
-
-- 在 Codex App 的侧边栏中点击 Plugins；
-- 在 Coding 分类中找到 `Superpowers`；
-- 点击 Superpowers 旁边的 `+`，然后按提示操作。
+当前 fork 未发布到 Codex 官方插件市场，Codex App 没有可从本仓库验证的 fork 直接安装命令。不要在官方市场中安装同名原版插件。
 
 ### Codex CLI
 
-Superpowers 可通过 [Codex 官方插件市场](https://github.com/openai/plugins)获取。
-
-- 打开插件搜索界面：
-
-  ```bash
-  /plugins
-  ```
-
-- 搜索 Superpowers：
-
-  ```bash
-  superpowers
-  ```
-
-- 选择 `Install Plugin`。
+当前 fork 未发布到 Codex 官方插件市场，Codex CLI 没有可从本仓库验证的 fork 直接安装命令。不要在官方市场中安装同名原版插件。
 
 ### Cursor
 
-- 在 Cursor Agent 对话中从市场安装：
-
-  ```text
-  /add-plugin superpowers
-  ```
-
-- 或在插件市场中搜索 “superpowers”。
+当前 fork 没有从仓库或 Cursor 官方文档中验证出的直接安装命令。不要使用 Cursor 市场中的同名原版插件。
 
 ### Devin CLI
 
 - 从本仓库安装插件：
 
   ```bash
-  devin plugins install obra/superpowers
+  devin plugins install kingtongxingsheng/superpowers
   ```
 
 - 更新到最新版本：
@@ -143,13 +107,13 @@ Superpowers 可通过 [Codex 官方插件市场](https://github.com/openai/plugi
 - 注册市场：
 
   ```bash
-  droid plugin marketplace add https://github.com/obra/superpowers
+  droid plugin marketplace add https://github.com/kingtongxingsheng/superpowers
   ```
 
 - 安装插件：
 
   ```bash
-  droid plugin install superpowers@superpowers
+  droid plugin install superpowers-cn@superpowers
   ```
 
 ### Gemini CLI
@@ -157,7 +121,7 @@ Superpowers 可通过 [Codex 官方插件市场](https://github.com/openai/plugi
 - 安装扩展：
 
   ```bash
-  gemini extensions install https://github.com/obra/superpowers
+  gemini extensions install https://github.com/kingtongxingsheng/superpowers
   ```
 
 - 后续更新：
@@ -168,33 +132,21 @@ Superpowers 可通过 [Codex 官方插件市场](https://github.com/openai/plugi
 
 ### GitHub Copilot CLI
 
-- 注册市场：
+- 注册当前 fork 自带的插件市场：
 
   ```bash
-  copilot plugin marketplace add obra/superpowers-marketplace
+  copilot plugin marketplace add kingtongxingsheng/superpowers
   ```
 
-- 安装插件：
+- 安装 fork 版本：
 
   ```bash
-  copilot plugin install superpowers@superpowers-marketplace
+  copilot plugin install superpowers-cn@superpowers-dev
   ```
 
 ### Grok Build CLI
 
-Superpowers 可通过 [Grok 官方插件市场](https://github.com/xai-org/plugin-marketplace)获取。
-
-- 从 xAI 官方市场安装插件：
-
-  ```bash
-  grok plugin install superpowers@xai-official --trust
-  ```
-
-- 或在 TUI 中打开市场，搜索 Superpowers 并安装：
-
-  ```text
-  /marketplace
-  ```
+当前 fork 没有从仓库或 Grok Build CLI 官方文档中验证出的直接安装命令。不要使用 Grok 官方市场中的同名原版插件。
 
 ### Kimi Code
 
@@ -211,7 +163,7 @@ Superpowers 位于 Kimi Code 的插件市场中。
 - 或直接从本仓库安装：
 
   ```text
-  /plugins install https://github.com/obra/superpowers
+  /plugins install https://github.com/kingtongxingsheng/superpowers
   ```
 
 - 详细文档：[docs/README.kimi.md](docs/README.kimi.md)
@@ -223,7 +175,7 @@ OpenCode 使用独立的插件安装方式；即使你已经在其他 harness �
 - 告诉 OpenCode：
 
   ```text
-  Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md
+  Fetch and follow instructions from https://raw.githubusercontent.com/kingtongxingsheng/superpowers/refs/heads/main/.opencode/INSTALL.md
   ```
 
 - 详细文档：[docs/README.opencode.md](docs/README.opencode.md)
@@ -233,7 +185,7 @@ OpenCode 使用独立的插件安装方式；即使你已经在其他 harness �
 从本仓库安装 Superpowers Pi package：
 
 ```bash
-pi install git:github.com/obra/superpowers
+pi install git:github.com/kingtongxingsheng/superpowers
 ```
 
 本地开发时，将当前 checkout 作为临时 package 加载运行 Pi：
@@ -249,7 +201,7 @@ Pi package 会加载 Superpowers 技能和一个小型扩展，在会话启动�
 从本仓库安装 Superpowers Hermes 插件：
 
 ```bash
-hermes plugins install obra/superpowers --enable
+hermes plugins install kingtongxingsheng/superpowers --enable
 ```
 
 安装后重启所有正在运行的 Hermes 会话。注意：Hermes 没有 post-compaction hook，因此很长的会话如果在第一轮之后发生压缩，会丢失 bootstrap；如果技能停止触发，请启动新会话。
@@ -277,7 +229,7 @@ hermes plugins install obra/superpowers --enable
 Superpowers 由 [Jesse Vincent](https://blog.fsck.com) 和 [Prime Radiant](https://primeradiant.com) 的其他成员共同构建。
 
 - **Discord**：[加入社区](https://discord.gg/35wsABTejz)，获得支持、提问并分享你正在构建的内容；
-- **Issues**：https://github.com/obra/superpowers/issues；
+- **Issues**：https://github.com/kingtongxingsheng/superpowers/issues；
 - **发布公告**：[订阅](https://primeradiant.com/superpowers/)，获取新版本通知。
 
 ## 包含内容

@@ -225,14 +225,14 @@ EOF
 
     cat > "$repo/.codex-plugin/plugin.json" <<EOF
 {
-  "name": "superpowers",
+"name": "superpowers-cn",
   "version": "$MANIFEST_VERSION"
 }
 EOF
 
     cat > "$repo/.kimi-plugin/plugin.json" <<EOF
 {
-  "name": "superpowers",
+"name": "superpowers-cn",
   "version": "$MANIFEST_VERSION"
 }
 EOF
@@ -366,7 +366,7 @@ write_synced_destination_fixture() {
 
     cat > "$repo/plugins/superpowers/.codex-plugin/plugin.json" <<EOF
 {
-  "name": "superpowers",
+"name": "superpowers-cn",
   "version": "$MANIFEST_VERSION"
 }
 EOF

@@ -4,26 +4,16 @@ Complete guide for using Superpowers with [Kimi Code](https://github.com/Moonsho
 
 ## Installation
 
-Superpowers is available in Kimi Code's plugin marketplace.
-
-Open the plugin manager:
+从当前 fork 安装 Superpowers：
 
 ```text
-/plugins
-```
-
-Go to `Marketplace` > `Superpowers` and install it.
-
-You can also install from this repository:
-
-```text
-/plugins install https://github.com/obra/superpowers
+/plugins install https://github.com/kingtongxingsheng/superpowers
 ```
 
 For unreleased validation against `dev`, pin the branch explicitly:
 
 ```text
-/plugins install https://github.com/obra/superpowers/tree/dev
+/plugins install https://github.com/kingtongxingsheng/superpowers/tree/dev
 ```
 
 Kimi Code applies plugin changes to new sessions. After installing, updating, enabling, disabling, or reloading a plugin, start a fresh session with `/new`.
@@ -78,7 +68,7 @@ Select Superpowers and update it from there. Start a fresh session with `/new` a
 Kimi Code installs the latest GitHub release for a bare repository URL when one exists. To test unreleased changes before the next Superpowers release, install the branch explicitly:
 
 ```text
-/plugins install https://github.com/obra/superpowers/tree/dev
+/plugins install https://github.com/kingtongxingsheng/superpowers/tree/dev
 ```
 
 ### Skills not triggering

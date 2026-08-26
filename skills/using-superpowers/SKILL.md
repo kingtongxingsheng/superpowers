@@ -29,8 +29,8 @@ description: 在会话开始时了解技能选择规则；当技能可能适用�
 
 多个技能同时适用时，在用户授权后先调用流程技能——它们决定方法，然后再调用领域或实施技能。不要因为任务类型、进入 plan mode 或开始实现而自动调用任何技能。
 
-- “Let's build X” → 先向用户说明将调用 superpowers:brainstorming 并等待授权，获授权后再调用。
-- “Fix this bug” → 先向用户说明将调用 superpowers:systematic-debugging 并等待授权，获授权后再调用。
+- “Let's build X” → 先向用户说明将调用 superpowers-cn:brainstorming 并等待授权，获授权后再调用。
+- “Fix this bug” → 先向用户说明将调用 superpowers-cn:systematic-debugging 并等待授权，获授权后再调用。
 
 ## 红旗
 

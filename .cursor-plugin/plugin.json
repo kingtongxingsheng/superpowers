@@ -1,5 +1,5 @@
 {
-  "name": "superpowers",
+  "name": "superpowers-cn",
   "displayName": "Superpowers",
   "description": "核心技能库：TDD、调试、协作模式和经过验证的技术",
   "version": "1.0.0",
@@ -7,8 +7,8 @@
     "name": "Jesse Vincent",
     "email": "jesse@fsck.com"
   },
-  "homepage": "https://github.com/obra/superpowers",
-  "repository": "https://github.com/obra/superpowers",
+  "homepage": "https://github.com/kingtongxingsheng/superpowers",
+  "repository": "https://github.com/kingtongxingsheng/superpowers",
   "license": "MIT",
   "keywords": [
     "skills",

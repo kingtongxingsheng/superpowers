@@ -94,7 +94,7 @@ Superpowers 核心包含对所有用户都适用的通用技能。针对特定�
 
 技能不是 prose，而是塑造 agent 行为的代码。如果修改技能内容：
 
-- 使用 `superpowers:writing-skills` 开发和测试修改；
+- 使用 `superpowers-cn:writing-skills` 开发和测试修改；
 - 在多个会话中运行对抗性压力测试；
 - 在 PR 中展示修改前后的评估结果；
 - 没有证据证明效果改善时，不要修改经过精心调优的内容（Red Flags 表、合理化清单、“human partner”措辞）。

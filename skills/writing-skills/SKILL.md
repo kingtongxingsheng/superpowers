@@ -13,7 +13,7 @@ description: 在创建新技能、编辑现有技能或部署前验证技能是�
 
 **核心原则：** 如果没有观察过 agent 在没有技能时失败，就不知道技能是否教会了正确的行为。
 
-**必须具备的背景：** 使用本技能前必须理解 `superpowers:test-driven-development`，因为它定义了 RED-GREEN-REFACTOR 循环；本技能将同一循环应用于文档。
+**必须具备的背景：** 使用本技能前必须理解 `superpowers-cn:test-driven-development`，因为它定义了 RED-GREEN-REFACTOR 循环；本技能将同一循环应用于文档。
 
 **官方指南：** Anthropic 的技能编写最佳实践见 `anthropic-best-practices.md`。该文件补充了本技能的 TDD 方法。
 
@@ -178,8 +178,8 @@ description 只描述触发条件，不要总结流程。测试表明，若 desc
 
 引用其他技能时只使用技能名，并明确标注要求：
 
-- `**REQUIRED SUB-SKILL:** Use superpowers:test-driven-development`
-- `**REQUIRED BACKGROUND:** You MUST understand superpowers:systematic-debugging`
+- `**REQUIRED SUB-SKILL:** Use superpowers-cn:test-driven-development`
+- `**REQUIRED BACKGROUND:** You MUST understand superpowers-cn:systematic-debugging`
 
 不要使用模糊的文件路径，也不要使用 `@` 强制加载文件；后者会立即消耗上下文。
 

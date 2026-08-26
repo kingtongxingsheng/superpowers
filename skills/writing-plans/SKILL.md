@@ -11,7 +11,7 @@ description: 当你已有规格或多步骤任务要求、并且尚未接触代�
 
 **开始时宣布：**“我正在使用 writing-plans 技能来创建实施计划。”
 
-**上下文：**如果在隔离 worktree 中工作，它应在执行时通过 `superpowers:using-git-worktrees` 技能创建。
+**上下文：**如果在隔离 worktree 中工作，它应在执行时通过 `superpowers-cn:using-git-worktrees` 技能创建。
 
 **保存计划到：**`docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`
 -（用户对计划位置的偏好优先于默认值）
@@ -51,7 +51,7 @@ description: 当你已有规格或多步骤任务要求、并且尚未接触代�
 ```markdown
 # [Feature Name] Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking。
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers-cn:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking。
 
 **Goal:** [One sentence describing what this builds]
 
@@ -155,6 +155,6 @@ git commit -m "feat: add specific feature"
 
 **选择继续执行？**
 
-**必需子技能：**使用 superpowers:executing-plans
+**必需子技能：**使用 superpowers-cn:executing-plans
 - 在当前会话中执行任务
 - 按计划运行测试和检查点验证
