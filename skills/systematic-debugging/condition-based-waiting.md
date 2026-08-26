@@ -1,12 +1,12 @@
-# Condition-Based Waiting
+# 基于条件的等待
 
-## Overview
+## 概述
 
-Flaky tests often guess at timing with arbitrary delays. This creates race conditions where tests pass on fast machines but fail under load or in CI.
+不稳定测试经常用任意延迟猜测时序。这会产生竞态条件：在快速机器上通过，但在负载下或 CI 中失败。
 
-**Core principle:** Wait for the actual condition you care about, not a guess about how long it takes.
+**核心原则：**等待真正关心的条件，而不是猜测它需要多长时间。
 
-## When to Use
+## 何时使用
 
 ```dot
 digraph when_to_use {
@@ -21,43 +21,43 @@ digraph when_to_use {
 }
 ```
 
-**Use when:**
-- Tests have arbitrary delays (`setTimeout`, `sleep`, `time.sleep()`)
-- Tests are flaky (pass sometimes, fail under load)
-- Tests timeout when run in parallel
-- Waiting for async operations to complete
+**适用于：**
+- 测试包含任意延迟（`setTimeout`、`sleep`、`time.sleep()`）
+- 测试不稳定（有时通过，负载下失败）
+- 并行运行时超时
+- 等待异步操作完成
 
-**Don't use when:**
-- Testing actual timing behavior (debounce, throttle intervals)
-- Always document WHY if using arbitrary timeout
+**不适用于：**
+- 测试真实时序行为（debounce、throttle 间隔）
+- 使用任意超时时必须记录原因
 
-## Core Pattern
+## 核心模式
 
 ```typescript
-// ❌ BEFORE: Guessing at timing
+// ❌ 修改前：猜测时序
 await new Promise(r => setTimeout(r, 50));
 const result = getResult();
 expect(result).toBeDefined();
 
-// ✅ AFTER: Waiting for condition
+// ✅ 修改后：等待条件
 await waitFor(() => getResult() !== undefined);
 const result = getResult();
 expect(result).toBeDefined();
 ```
 
-## Quick Patterns
+## 快速模式
 
-| Scenario | Pattern |
+| 场景 | 模式 |
 |----------|---------|
-| Wait for event | `waitFor(() => events.find(e => e.type === 'DONE'))` |
-| Wait for state | `waitFor(() => machine.state === 'ready')` |
-| Wait for count | `waitFor(() => items.length >= 5)` |
-| Wait for file | `waitFor(() => fs.existsSync(path))` |
-| Complex condition | `waitFor(() => obj.ready && obj.value > 10)` |
+| 等待事件 | `waitFor(() => events.find(e => e.type === 'DONE'))` |
+| 等待状态 | `waitFor(() => machine.state === 'ready')` |
+| 等待数量 | `waitFor(() => items.length >= 5)` |
+| 等待文件 | `waitFor(() => fs.existsSync(path))` |
+| 复杂条件 | `waitFor(() => obj.ready && obj.value > 10)` |
 
-## Implementation
+## 实现
 
-Generic polling function:
+通用轮询函数：
 ```typescript
 async function waitFor<T>(
   condition: () => T | undefined | null | false,
@@ -74,42 +74,42 @@ async function waitFor<T>(
       throw new Error(`Timeout waiting for ${description} after ${timeoutMs}ms`);
     }
 
-    await new Promise(r => setTimeout(r, 10)); // Poll every 10ms
+    await new Promise(r => setTimeout(r, 10)); // 每 10ms 轮询
   }
 }
 ```
 
-See `condition-based-waiting-example.ts` in this directory for complete implementation with domain-specific helpers (`waitForEvent`, `waitForEventCount`, `waitForEventMatch`) from actual debugging session.
+完整实现以及来自实际调试会话的领域辅助函数（`waitForEvent`、`waitForEventCount`、`waitForEventMatch`）见本目录的 `condition-based-waiting-example.ts`。
 
-## Common Mistakes
+## 常见错误
 
-**❌ Polling too fast:** `setTimeout(check, 1)` - wastes CPU
-**✅ Fix:** Poll every 10ms
+**❌ 轮询过快：**`setTimeout(check, 1)`——浪费 CPU
+**✅ 修复：**每 10ms 轮询
 
-**❌ No timeout:** Loop forever if condition never met
-**✅ Fix:** Always include timeout with clear error
+**❌ 没有超时：**条件永远不满足时无限循环
+**✅ 修复：**始终包含超时和清晰错误
 
-**❌ Stale data:** Cache state before loop
-**✅ Fix:** Call getter inside loop for fresh data
+**❌ 数据过时：**在循环前缓存状态
+**✅ 修复：**在循环内调用 getter，获取新鲜数据
 
-## When Arbitrary Timeout IS Correct
+## 何时任意超时是正确的
 
 ```typescript
-// Tool ticks every 100ms - need 2 ticks to verify partial output
-await waitForEvent(manager, 'TOOL_STARTED'); // First: wait for condition
-await new Promise(r => setTimeout(r, 200));   // Then: wait for timed behavior
-// 200ms = 2 ticks at 100ms intervals - documented and justified
+// Tool 每 100ms tick 一次——需要 2 次 tick 来验证部分输出
+await waitForEvent(manager, 'TOOL_STARTED'); // 首先：等待条件
+await new Promise(r => setTimeout(r, 200));   // 然后：等待有时序的行为
+// 200ms = 100ms 间隔的 2 次 tick——有记录且有理由
 ```
 
-**Requirements:**
-1. First wait for triggering condition
-2. Based on known timing (not guessing)
-3. Comment explaining WHY
+**要求：**
+1. 先等待触发条件
+2. 基于已知时序，而不是猜测
+3. 添加解释原因的注释
 
-## Real-World Impact
+## 实际影响
 
-From debugging session (2025-10-03):
-- Fixed 15 flaky tests across 3 files
-- Pass rate: 60% → 100%
-- Execution time: 40% faster
-- No more race conditions
+来自调试会话（2025-10-03）：
+- 修复了 3 个文件中的 15 个不稳定测试
+- 通过率：60% → 100%
+- 执行时间：快 40%
+- 不再有竞态条件

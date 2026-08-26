@@ -1,7 +1,7 @@
 (function() {
   const MIN_RECONNECT_MS = 500;
   const MAX_RECONNECT_MS = 30000;
-  const TOMBSTONE_AFTER_MS = 15000; // show the "paused" overlay after this long disconnected
+  const TOMBSTONE_AFTER_MS = 15000; // 断开连接超过此时长后显示“已暂停”覆盖层
 
   // Pure: next backoff delay (doubles, capped). Exported for unit tests.
   function nextReconnectDelay(current, max) {
@@ -68,9 +68,9 @@
       'align-items:center;justify-content:center;padding:2rem;text-align:center;' +
       'background:rgba(20,20,22,0.92);color:#f5f5f7;font-family:system-ui,sans-serif';
     el.innerHTML = '<div style="max-width:480px">' +
-      '<h2 style="margin:0 0 .5rem;font-weight:600">Companion paused</h2>' +
-      '<p style="margin:0;opacity:.85">This brainstorm companion has stopped. ' +
-      'Ask your coding agent to bring it back — this page reconnects automatically.</p></div>';
+      '<h2 style="margin:0 0 .5rem;font-weight:600">Companion 已暂停</h2>' +
+      '<p style="margin:0;opacity:.85">此头脑风暴 companion 已停止。' +
+      '请让 coding agent 将它恢复——此页面会自动重新连接。</p></div>';
     if (document.body) document.body.appendChild(el);
   }
 

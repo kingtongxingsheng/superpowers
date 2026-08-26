@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Stop the brainstorm server and clean up
-# Usage: stop-server.sh <session_dir>
+# 停止头脑风暴服务器并清理
+# 用法：stop-server.sh <session_dir>
 #
-# Kills the server process. Only deletes session directory if it's
-# under /tmp (ephemeral). Persistent directories (.superpowers/) are
-# kept so mockups can be reviewed later.
+# 终止服务器进程。只有当会话目录位于 /tmp（临时目录）下时才删除它。
+# 持久目录（.superpowers/）会保留，以便之后审阅 mockup。
 
 SESSION_DIR="$1"
 

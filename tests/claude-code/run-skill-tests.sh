@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Test runner for Claude Code skills
-# Tests skills by invoking Claude Code CLI and verifying behavior
+# 测试 runner，用于验证 Claude Code 技能
+# 通过调用 Claude Code CLI 验证技能行为
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -25,8 +25,7 @@ fi
 # Parse command line arguments
 VERBOSE=false
 SPECIFIC_TEST=""
-TIMEOUT=900  # Per-test-file budget; must exceed the file's worst case
-             # (test-subagent-driven-development.sh: 9 prompts x 90s each)
+TIMEOUT=900  # 每个测试文件的预算；必须超过该文件最坏情况
 RUN_INTEGRATION=false
 
 while [[ $# -gt 0 ]]; do
@@ -55,13 +54,10 @@ while [[ $# -gt 0 ]]; do
             echo "  --test, -t NAME      Run only the specified test"
             echo "  --timeout SECONDS    Set timeout per test (default: 900)"
             echo "  --integration, -i    Run integration tests (slow, 10-30 min)"
-            echo "  --help, -h           Show this help"
+            echo "  --help, -h           显示帮助"
             echo ""
-            echo "Tests:"
-            echo "  test-subagent-driven-development.sh  Test skill loading and requirements"
-            echo ""
-            echo "Integration Tests (use --integration):"
-            echo "  test-subagent-driven-development-integration.sh  Full workflow execution"
+            echo "测试："
+            echo "  test-worktree-path-policy.sh  测试 worktree 路径策略"
             exit 0
             ;;
         *)
@@ -75,14 +71,10 @@ done
 # List of skill tests to run (fast unit tests)
 tests=(
     "test-worktree-path-policy.sh"
-    "test-sdd-workspace.sh"
-    "test-subagent-driven-development.sh"
 )
 
 # Integration tests (slow, full execution)
-integration_tests=(
-    "test-subagent-driven-development-integration.sh"
-)
+integration_tests=()
 
 # Add integration tests if requested
 if [ "$RUN_INTEGRATION" = true ]; then

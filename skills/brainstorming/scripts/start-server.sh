@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
-# Start the brainstorm server and output connection info
-# Usage: start-server.sh [--project-dir <path>] [--host <bind-host>] [--url-host <display-host>] [--foreground] [--background]
+# 启动头脑风暴服务器并输出连接信息
+# 用法：start-server.sh [--project-dir <path>] [--host <bind-host>] [--url-host <display-host>] [--foreground] [--background]
 #
-# Starts server on a random high port, outputs JSON with URL.
-# Each session gets its own directory to avoid conflicts.
+# 在随机高位端口启动服务器，并输出包含 URL 的 JSON。
+# 每个会话使用独立目录，避免冲突。
 #
-# Options:
-#   --project-dir <path>  Store session files under <path>/.superpowers/brainstorm/
-#                         instead of /tmp. Files persist after server stops.
-#   --host <bind-host>    Host/interface to bind (default: 127.0.0.1).
-#                         Use 0.0.0.0 in remote/containerized environments.
-#   --url-host <host>     Hostname shown in returned URL JSON.
-#   --idle-timeout-minutes <n>  Shut down after n minutes idle (default 240 = 4h).
-#   --open                Auto-open the browser on the first screen (use only
-#                         after the user approves the visual companion).
-#   --foreground          Run server in the current terminal (no backgrounding).
-#   --background          Force background mode (overrides Codex auto-foreground).
+# 选项：
+#   --project-dir <path>  将会话文件保存到 <path>/.superpowers/brainstorm/
+#                         而不是 /tmp。服务器停止后文件仍然保留。
+#   --host <bind-host>    要绑定的主机/接口（默认：127.0.0.1）。
+#                         在远程/容器环境中使用 0.0.0.0。
+#   --url-host <host>     返回的 URL JSON 中显示的 hostname。
+#   --idle-timeout-minutes <n>  空闲 n 分钟后关闭（默认 240 = 4 小时）。
+#   --open                在第一个界面上自动打开浏览器（仅在用户批准 visual companion 后使用）。
+#   --foreground          在当前终端运行服务器（不放到后台）。
+#   --background          强制后台模式（覆盖 Codex 自动前台模式）。
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 

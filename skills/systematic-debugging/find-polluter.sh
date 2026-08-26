@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
-# Bisection script to find which test creates unwanted files/state
-# Usage: ./find-polluter.sh <file_or_dir_to_check> <test_pattern>
-# Example: ./find-polluter.sh '.git' 'src/**/*.test.ts'
+# 用二分脚本找出创建不需要文件/状态的测试
+# 用法：./find-polluter.sh <file_or_dir_to_check> <test_pattern>
+# 示例：./find-polluter.sh '.git' 'src/**/*.test.ts'
 
 set -e
 
 if [ $# -ne 2 ]; then
-  echo "Usage: $0 <file_to_check> <test_pattern>"
-  echo "Example: $0 '.git' 'src/**/*.test.ts'"
+  echo "用法：$0 <file_to_check> <test_pattern>"
+  echo "示例：$0 '.git' 'src/**/*.test.ts'"
   exit 1
 fi
 
 POLLUTION_CHECK="$1"
 TEST_PATTERN="$2"
 
-echo "🔍 Searching for test that creates: $POLLUTION_CHECK"
-echo "Test pattern: $TEST_PATTERN"
+echo "🔍 正在搜索创建以下内容的测试：$POLLUTION_CHECK"
+echo "测试模式：$TEST_PATTERN"
 echo ""
 
 # Get list of test files (find . emits ./-prefixed paths, so accept the
@@ -31,7 +31,7 @@ else
   TOTAL=$(printf '%s\n' "$TEST_FILES" | wc -l | tr -d ' ')
 fi
 
-echo "Found $TOTAL test files"
+echo "找到 $TOTAL 个测试文件"
 echo ""
 
 COUNT=0
@@ -40,12 +40,12 @@ for TEST_FILE in $TEST_FILES; do
 
   # Skip if pollution already exists
   if [ -e "$POLLUTION_CHECK" ]; then
-    echo "⚠️  Pollution already exists before test $COUNT/$TOTAL"
-    echo "   Skipping: $TEST_FILE"
+    echo "⚠️  测试 $COUNT/$TOTAL 前已存在污染"
+    echo "   跳过：$TEST_FILE"
     continue
   fi
 
-  echo "[$COUNT/$TOTAL] Testing: $TEST_FILE"
+  echo "[$COUNT/$TOTAL] 测试：$TEST_FILE"
 
   # Run the test
   npm test "$TEST_FILE" > /dev/null 2>&1 || true
@@ -53,20 +53,20 @@ for TEST_FILE in $TEST_FILES; do
   # Check if pollution appeared
   if [ -e "$POLLUTION_CHECK" ]; then
     echo ""
-    echo "🎯 FOUND POLLUTER!"
-    echo "   Test: $TEST_FILE"
-    echo "   Created: $POLLUTION_CHECK"
+    echo "🎯 找到污染者！"
+    echo "   测试：$TEST_FILE"
+    echo "   创建了：$POLLUTION_CHECK"
     echo ""
-    echo "Pollution details:"
+    echo "污染详情："
     ls -la "$POLLUTION_CHECK"
     echo ""
-    echo "To investigate:"
-    echo "  npm test $TEST_FILE    # Run just this test"
-    echo "  cat $TEST_FILE         # Review test code"
+    echo "调查方法："
+    echo "  npm test $TEST_FILE    # 只运行这个测试"
+    echo "  cat $TEST_FILE         # 查看测试代码"
     exit 1
   fi
 done
 
 echo ""
-echo "✅ No polluter found - all tests clean!"
+echo "✅ 未找到污染者——所有测试都干净！"
 exit 0
