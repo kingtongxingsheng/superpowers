@@ -9,7 +9,7 @@
     {
 "name": "superpowers-cn",
       "description": "Claude Code 核心技能库：TDD、调试、协作模式和经过验证的技术",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "source": "./",
       "author": {
         "name": "Jesse Vincent",
