@@ -1,6 +1,6 @@
 name: superpowers
-version: 6.3.0
-description: Superpowers skills and workflow bootstrap for Hermes Agent
+version: 1.0.0
+description: 面向 Hermes Agent 的 Superpowers 技能与工作流 bootstrap
 author: obra
 provides_hooks:
   - pre_llm_call

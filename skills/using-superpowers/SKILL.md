@@ -1,6 +1,6 @@
 ---
 name: using-superpowers
-description: 在每次会话开始时使用；用于了解如何查找和使用技能，并要求在任何响应（包括澄清问题）之前调用技能
+description: 在会话开始时了解技能选择规则；当技能可能适用且未被用户明确请求时，先说明用途并获得授权后调用
 ---
 
 <SUBAGENT-STOP>
@@ -8,27 +8,29 @@ description: 在每次会话开始时使用；用于了解如何查找和使用�
 </SUBAGENT-STOP>
 
 <EXTREMELY-IMPORTANT>
-如果你认为某个技能有哪怕 1% 的可能适用于当前任务，就绝对必须调用它。
+如果你认为某个技能可能适用于当前任务，且用户没有明确请求该技能，先询问用户；获得授权后就必须调用它。
 
-如果某个技能适用于你的任务，你没有选择余地，必须使用它。
+如果用户直接明确请求某个技能，则该请求本身视为授权，必须调用该技能。
 
 这不可协商。不能用任何理由为自己开脱。
+
+用户明确拒绝未授权，不使用该技能。
 </EXTREMELY-IMPORTANT>
 
 ## 规则
 
-**在任何响应或行动之前调用相关或被请求的技能**——包括澄清问题、探索代码库或检查文件。如果后来发现技能不适用，可以不继续使用它。
+**在回复或采取行动前，先判断是否存在适用技能。**如果是 agent 自主判断适用，必须先向用户说明将调用哪个技能及原因，并等待用户明确授权；未获得授权前不得调用。如果用户直接明确请求某个技能，则无需重复询问，直接调用该技能。
 
-**进入 plan mode 之前：**如果还没有进行头脑风暴，先调用 brainstorming 技能。
+**进入 plan mode 时不会自动调用任何技能。**如果判断 `test-driven-development` 或其他技能适用，仍必须先向用户说明并获得明确授权。
 
-然后宣布“Using [skill] to [purpose]”，并严格遵循该技能。如果技能包含清单，为每个项目创建待办事项。
+然后向用户说明“Using [skill] to [purpose]”，请求明确授权；获得授权后再调用并严格遵循该技能。如果技能包含清单，为每个项目创建待办事项。
 
 ## 技能优先级
 
-多个技能同时适用时，先处理流程技能——它们决定方法，然后再由实施技能（frontend-design 等）执行。Brainstorming 和 systematic-debugging 是 Superpowers 中最常见的流程技能，但规则适用于所有技能。
+多个技能同时适用时，在用户授权后先调用流程技能——它们决定方法，然后再调用领域或实施技能。不要因为任务类型、进入 plan mode 或开始实现而自动调用任何技能。
 
-- “Let's build X” → 先使用 superpowers:brainstorming，再使用实施技能。
-- “Fix this bug” → 先使用 superpowers:systematic-debugging，再使用领域技能。
+- “Let's build X” → 先向用户说明将调用 superpowers:brainstorming 并等待授权，获授权后再调用。
+- “Fix this bug” → 先向用户说明将调用 superpowers:systematic-debugging 并等待授权，获授权后再调用。
 
 ## 红旗
 

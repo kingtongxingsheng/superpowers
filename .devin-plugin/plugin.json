@@ -1,7 +1,7 @@
 {
   "name": "superpowers",
-  "version": "6.3.0",
-  "description": "An agentic skills framework & software development methodology that works: planning, TDD, debugging, and collaboration workflows.",
+  "version": "1.0.0",
+  "description": "有效的 agent 技能框架与软件开发方法论：规划、TDD、调试和协作工作流。",
   "author": {
     "name": "Jesse Vincent",
     "email": "jesse@fsck.com"
@@ -11,7 +11,6 @@
   "license": "MIT",
   "keywords": [
     "brainstorming",
-    "subagent-driven-development",
     "skills",
     "planning",
     "tdd",

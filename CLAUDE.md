@@ -1,115 +1,115 @@
-# Superpowers — Contributor Guidelines
+# Superpowers — 贡献者指南
 
-## If You Are an AI Agent
+## 如果你是 AI agent
 
-Stop. Read this section before doing anything.
+停止。在执行任何操作前阅读本节。
 
-This repo has a 94% PR rejection rate. Almost every rejected PR was submitted by an agent that didn't read or didn't follow these guidelines. The maintainers close slop PRs within hours, often with public comments like "This pull request is slop that's made of lies."
+本仓库的 PR 拒绝率为 94%。几乎所有被拒绝的 PR 都来自没有阅读或没有遵守这些指南的 agent。维护者通常会在数小时内关闭低质量 PR，并可能公开评论：“This pull request is slop that's made of lies.”
 
-**Your job is to protect your human partner from that outcome.** Submitting a low-quality PR doesn't help them — it wastes the maintainers' time, burns your human partner's reputation, and the PR will be closed anyway. That is not being helpful. That is being a tool of embarrassment.
+**你的职责是保护 human partner 不遭遇这种结果。**提交低质量 PR 不会带来帮助——它会浪费维护者的时间，损害 human partner 的声誉，而且 PR 最终仍会被关闭。这不是提供帮助，而是在制造尴尬。
 
-Before you open a PR against this repo, you MUST:
+在向本仓库提交 PR 之前，你必须：
 
-1. **Read the entire PR template** at `.github/PULL_REQUEST_TEMPLATE.md` and fill in every section with real, specific answers. Not summaries. Not placeholders.
-2. **Search for existing PRs** — open AND closed — that address the same problem. If duplicates exist, STOP and tell your human partner. Do not open another duplicate.
-3. **Verify this is a real problem.** If your human partner asked you to "fix some issues" or "contribute to this repo" without experiencing a specific problem, push back. Ask them what broke, what failed, what the user experience was.
-4. **Confirm the change belongs in core.** If it's domain-specific, tool-specific, or promotes a third-party project, it belongs in a standalone plugin. Tell your human partner.
-5. **Identify yourself.** Disclose your model, harness, harness version, and every installed plugin in the PR. Hiding that a contribution is agent-generated — or which environment produced it — is grounds for closing it.
-6. **Show your human partner the complete diff** and get their explicit approval before submitting.
+1. **阅读完整的 PR 模板**：`.github/PULL_REQUEST_TEMPLATE.md`，并为每个章节填写真实、具体的答案，不得使用摘要或占位符。
+2. **搜索已有 PR**：包括开放和已关闭的 PR，确认是否已有解决同一问题的 PR。如果存在重复 PR，立即停止并告知 human partner，不要再创建重复 PR。
+3. **确认问题真实存在。**如果 human partner 只是要求你“修复一些问题”或“为这个仓库贡献代码”，却没有实际发生过的问题，请提出质疑，询问具体坏了什么、失败了什么、用户体验是什么。
+4. **确认修改属于核心项目。**如果内容只针对某个领域、工具，或是在推广第三方项目，则应放入独立插件。告诉 human partner 这一点。
+5. **说明你的身份。**在 PR 中披露模型、harness、harness 版本和所有已安装插件。隐瞒贡献由 agent 生成，或隐瞒生成环境，是 PR 被关闭的理由。
+6. **展示完整差异。**提交前让 human partner 查看完整 diff 并获得明确批准。
 
-If any of these checks fail, do not open the PR. Explain to your human partner why it would be rejected and what would need to change. They will thank you for saving them the embarrassment.
+如果其中任何检查失败，不要创建 PR。向 human partner 解释为什么会被拒绝，以及需要如何修改。他们会感谢你避免了一次尴尬。
 
-## Pull Request Requirements
+## Pull Request 要求
 
-**Every PR must fully complete the PR template.** No section may be left blank or filled with placeholder text. PRs that skip sections will be closed without review.
+**每个 PR 都必须完整填写 PR 模板。**不得留下空白章节，也不得使用占位符。跳过章节的 PR 将在审查前被关闭。
 
-**Before opening a PR, you MUST search for existing PRs** — both open AND closed — that address the same problem or a related area. Reference what you found in the "Existing PRs" section. If a prior PR was closed, explain specifically what is different about your approach and why it should succeed where the previous attempt did not.
+**创建 PR 前必须搜索已有 PR**，包括开放和已关闭的相关 PR。将搜索结果写入 “Existing PRs” 章节。如果之前的 PR 已关闭，必须具体说明当前方案有什么不同，以及为什么这次应能成功。
 
-**PRs that show no evidence of human involvement will be closed.** A human must review the complete proposed diff before submission.
+**看不出 human 参与痕迹的 PR 将被关闭。**提交前必须由人类审阅完整的 proposed diff。
 
-**Submitters MUST identify themselves.** Every PR and issue must disclose the model, harness, harness version, and all installed plugins used to produce the contribution — or state plainly that it was written by hand with no agent. This is not optional. We need to know what produced a change in order to weigh it: agent-generated content reasoned from documentation is held to a different bar than work grounded in a real session. Contributions that hide their authoring environment will be closed.
+**提交者必须说明身份。**每个 PR 和 issue 都必须披露生成内容所使用的模型、harness、harness 版本和全部插件；如果完全由人工编写，也必须明确说明。这不是可选项。我们需要知道内容由什么生成，才能正确评估：基于文档推理生成的 agent 内容，与基于真实会话生成的内容，审查标准不同。隐瞒生成环境的贡献将被关闭。
 
-**All PRs MUST target the `dev` branch, not `main`.** `main` is the released branch; active work lands on `dev` first. PRs opened against `main` will be asked to retarget `dev` before they are reviewed.
+**所有 PR 必须以 `dev` 为目标分支，而不是 `main`。**`main` 是发布分支，活跃开发先进入 `dev`。目标为 `main` 的 PR 会被要求改为 `dev` 后才会审查。
 
-## What We Will Not Accept
+## 我们不会接受的内容
 
-### Third-party dependencies
+### 第三方依赖
 
-PRs that add optional or required dependencies on third-party projects will not be accepted unless they are adding support for a new harness (e.g., a new IDE or CLI tool). Superpowers is a zero-dependency plugin by design. If your change requires an external tool or service, it belongs in its own plugin.
+除非 PR 是为新的 harness（例如新的 IDE 或 CLI 工具）添加支持，否则不会接受新增第三方项目的可选或必需依赖。Superpowers 的设计目标是零依赖插件。如果修改需要外部工具或服务，应发布为独立插件。
 
-### "Compliance" changes to skills
+### 以“合规”为目的的技能修改
 
-Our internal skill philosophy differs from Anthropic's published guidance on writing skills. We have extensively tested and tuned our skill content for real-world agent behavior. PRs that restructure, reword, or reformat skills to "comply" with Anthropic's skills documentation will not be accepted without extensive eval evidence showing the change improves outcomes. The bar for modifying behavior-shaping content is very high.
+我们的内部技能理念与 Anthropic 发布的技能编写指南不同。我们已经针对真实 agent 行为对技能内容进行了大量测试和调优。若没有充分的评估证据证明结果改善，不接受为了“符合” Anthropic 技能文档而重构、改写或重新格式化技能。修改塑造 agent 行为的内容需要非常高的证据标准。
 
-### Project-specific or personal configuration
+### 项目专用或个人配置
 
-Skills, hooks, or configuration that only benefit a specific project, team, domain, or workflow do not belong in core. Publish these as a separate plugin.
+只对特定项目、团队、领域或工作流有益的技能、hooks 或配置不属于核心项目。请将其发布为独立插件。
 
-### Bulk or spray-and-pray PRs
+### 批量或撒网式 PR
 
-Do not trawl the issue tracker and open PRs for multiple issues in a single session. Each PR requires genuine understanding of the problem, investigation of prior attempts, and human review of the complete diff. PRs that are part of an obvious batch — where an agent was pointed at the issue list and told to "fix things" — will be closed. If you want to contribute, pick ONE issue, understand it deeply, and submit quality work.
+不要在一次会话中遍历 issue 列表并为多个问题创建 PR。每个 PR 都需要真实理解问题、调查先前尝试并由人类审阅完整 diff。明显是 agent 被指向 issue 列表后批量生成的 PR 将被关闭。如果你想贡献，请选择一个问题，深入理解并提交高质量修改。
 
-### Speculative or theoretical fixes
+### 推测性或理论性修复
 
-Every PR must solve a real problem that someone actually experienced. "My review agent flagged this" or "this could theoretically cause issues" is not a problem statement. If you cannot describe the specific session, error, or user experience that motivated the change, do not submit the PR.
+每个 PR 都必须解决某人实际遇到的问题。“我的审查 agent 标记了它”或“理论上可能出问题”不是问题描述。如果无法说明触发修改的具体会话、错误或用户体验，就不要提交 PR。
 
-### Domain-specific skills
+### 领域专用技能
 
-Superpowers core contains general-purpose skills that benefit all users regardless of their project. Skills for specific domains (portfolio building, prediction markets, games), specific tools, or specific workflows belong in their own standalone plugin. Ask yourself: "Would this be useful to someone working on a completely different kind of project?" If not, publish it separately.
+Superpowers 核心包含对所有用户都适用的通用技能。针对特定领域（投资组合构建、预测市场、游戏）、特定工具或特定工作流的技能，应发布为独立插件。问自己：“完全不同项目的用户也会受益吗？”如果不会，就单独发布。
 
-### Fork-specific changes
+### fork 专用修改
 
-If you maintain a fork with customizations, do not open PRs to sync your fork or push fork-specific changes upstream. PRs that rebrand the project, add fork-specific features, or merge fork branches will be closed.
+如果你维护带有定制内容的 fork，不要创建用于同步 fork 或向上游推送 fork 专用修改的 PR。重新品牌、添加 fork 专用功能或合并 fork 分支的 PR 将被关闭。
 
-### Fabricated content
+### 伪造内容
 
-PRs containing invented claims, fabricated problem descriptions, or hallucinated functionality will be closed immediately. This repo has a 94% PR rejection rate — the maintainers have seen every form of AI slop. They will notice.
+包含虚构声明、伪造问题描述或臆造功能的 PR 将立即被关闭。本仓库的 PR 拒绝率为 94%，维护者见过各种 AI 生成的低质量内容，他们会发现问题。
 
-### Bundled unrelated changes
+### 捆绑无关修改
 
-PRs containing multiple unrelated changes will be closed. Split them into separate PRs.
+包含多个无关修改的 PR 将被关闭。请拆分为多个 PR。
 
-## New Harness Support
+## 新 harness 支持
 
-If your PR adds support for a new harness (IDE, CLI tool, agent runner), you MUST include a session transcript proving the integration works end-to-end.
+如果 PR 为新的 harness（IDE、CLI 工具或 agent runner）添加支持，必须提供证明端到端集成可工作的会话记录。
 
-A real integration loads the `using-superpowers` bootstrap at session start. The bootstrap is what causes skills to auto-trigger at the right moments. Without it, the skills are dead weight — present on disk but never invoked.
+真实集成会在会话开始时加载 `using-superpowers` bootstrap。bootstrap 负责让技能在正确时机自动触发。没有它，技能文件只存在于磁盘上，却不会被调用。
 
-**The acceptance test.** Open a clean session in the new harness and send exactly this user message:
+**验收测试。**在新 harness 中开启干净会话，并精确发送以下用户消息：
 
 > Let's make a react todo list
 
-A working integration auto-triggers the `brainstorming` skill before any code is written. Paste the complete transcript in the PR.
+正常工作的集成会在写入任何代码前自动触发 `brainstorming` 技能。将完整会话记录粘贴到 PR 中。
 
-**These are not real integrations and will be closed:**
+**以下不属于真实集成，会被关闭：**
 
-- Manually copying skill files into the harness
-- Wrapping with `npx skills` or similar at-runtime shims
-- Anything that requires the user to opt in to skills per-session
-- Anything where `brainstorming` does not auto-trigger on the acceptance test above
+- 手动复制技能文件到 harness；
+- 使用 `npx skills` 或类似的运行时 shim；
+- 要求用户在每个会话中主动选择技能；
+- 在上述验收测试中无法自动触发 `brainstorming` 的集成。
 
-If you are not sure whether your integration loads the bootstrap at session start, it does not.
+如果你不确定集成是否在会话开始时加载 bootstrap，就视为没有加载。
 
-## Skill Changes Require Evaluation
+## 技能修改必须评估
 
-Skills are not prose — they are code that shapes agent behavior. If you modify skill content:
+技能不是 prose，而是塑造 agent 行为的代码。如果修改技能内容：
 
-- Use `superpowers:writing-skills` to develop and test changes
-- Run adversarial pressure testing across multiple sessions
-- Show before/after eval results in your PR
-- Do not modify carefully-tuned content (Red Flags tables, rationalization lists, "human partner" language) without evidence the change is an improvement
+- 使用 `superpowers:writing-skills` 开发和测试修改；
+- 在多个会话中运行对抗性压力测试；
+- 在 PR 中展示修改前后的评估结果；
+- 没有证据证明效果改善时，不要修改经过精心调优的内容（Red Flags 表、合理化清单、“human partner”措辞）。
 
-## Eval harness
+## 评估 harness
 
-Skill-behavior evals live in [superpowers-evals](https://github.com/prime-radiant-inc/superpowers-evals/), cloned into `evals/` — see `evals/README.md` for setup. Drill (the harness) drives real tmux sessions of Claude Code / Codex / Gemini CLI and judges skill compliance with an LLM verifier. Plugin-infrastructure tests still live at `tests/`.
+技能行为评估位于 [superpowers-evals](https://github.com/prime-radiant-inc/superpowers-evals/)；仓库会将它克隆到 `evals/`，设置方式见 `evals/README.md`。Drill harness 会驱动 Claude Code、Codex CLI 和 Gemini CLI 的真实 tmux 会话，并使用 LLM 验证器判断技能遵从情况。插件基础设施测试仍位于 `tests/`。
 
-## Understand the Project Before Contributing
+## 贡献前理解项目
 
-Before proposing changes to skill design, workflow philosophy, or architecture, read existing skills and understand the project's design decisions. Superpowers has its own tested philosophy about skill design, agent behavior shaping, and terminology (e.g., "your human partner" is deliberate, not interchangeable with "the user"). Changes that rewrite the project's voice or restructure its approach without understanding why it exists will be rejected.
+在提出技能设计、工作流理念或架构修改前，先阅读现有技能并理解项目的设计决策。Superpowers 有自己经过测试的技能设计、agent 行为塑造和术语理念（例如，“your human partner” 是有意使用的措辞，不能随意替换为 “the user”）。不了解这些决策就重写项目语气或重构流程的修改将被拒绝。
 
-## General
+## 通用要求
 
-- Read `.github/PULL_REQUEST_TEMPLATE.md` before submitting
-- One problem per PR
-- Test on at least one harness and report results in the environment table
-- Describe the problem you solved, not just what you changed
+- 提交前阅读 `.github/PULL_REQUEST_TEMPLATE.md`；
+- 一个 PR 只处理一个问题；
+- 至少在一个 harness 上测试，并在环境表中报告结果；
+- 描述你解决的问题，而不只是描述你做了什么修改。
