@@ -2,7 +2,7 @@
   "name": "superpowers-cn",
   "displayName": "Superpowers",
   "description": "核心技能库：TDD、调试、协作模式和经过验证的技术",
-"version": "1.0.2",
+"version": "1.0.3",
   "author": {
     "name": "Jesse Vincent",
     "email": "jesse@fsck.com"

@@ -31,9 +31,8 @@ HEAD_SHA=$(git rev-parse HEAD)
 
 **2. 派发代码审查 subagent：**
 
-派发一个 `general-purpose` subagent，填写 [code-reviewer.md](code-reviewer.md) 中的模板，
-整理审查上下文，再直接阅读相关 diff、历史和受影响文件，完成审查。必要时分阶段检查大 diff，但不要跳过任何一段。
-
+派发一个 `general-purpose` subagent，填写 [code-reviewer.md](code-reviewer.md) 中的模板。
+  
 **占位符：**
 - `{DESCRIPTION}` - 对已完成内容的简短总结
 - `{PLAN_OR_REQUIREMENTS}` - 它应该完成什么
@@ -60,7 +59,7 @@ HEAD_SHA=$(git rev-parse HEAD)
   DESCRIPTION: 添加了 verifyIndex() 和 repairIndex()，支持 4 类问题
   PLAN_OR_REQUIREMENTS: docs/superpowers/plans/deployment-plan.md 中的任务 2
   BASE_SHA: a7981ec
-  HEAD_SHA: 3df7661
+  HEAD_SHA: 3df7661                                                             
 
 [subagent完成审查返回：]
   优点：架构清晰，使用真实测试
