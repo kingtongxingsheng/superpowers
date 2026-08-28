@@ -1,18 +1,18 @@
 ---
 name: requesting-code-review
-description: 当完成任务、实现重要功能或合并前需要验证工作是否满足要求时使用；会直接在当前会话中完成审查，不派遣子代理
+description: 当完成任务、实现重要功能或合并前需要验证工作是否满足要求时使用；
 ---
 
 # 请求代码审查
 
-在当前会话中直接完成代码审查。围绕给定的 git 范围、需求和实现结果，尽早发现会被放大的问题。不要把完整会话历史直接当作上下文；只提取审查所需的信息。
+派发一个代码审查 subagent。围绕给定的 git 范围、需求和实现结果，尽早发现会被放大的问题。不要把完整会话历史直接当作上下文；只提取审查所需的信息。
 
 **核心原则：**尽早审查，频繁审查。
 
 ## 何时请求审查
 
 **必须请求：**
-- 每个任务完成后
+- 子代理驱动开发中的每个任务之后
 - 重要功能完成后
 - 合并到 main 前
 
@@ -29,9 +29,10 @@ BASE_SHA=$(git rev-parse HEAD~1)  # 或 origin/main
 HEAD_SHA=$(git rev-parse HEAD)
 ```
 
-**2. 直接审查 diff：**
+**2. 派发代码审查 subagent：**
 
-先用 [code-reviewer.md](code-reviewer.md) 中的模板整理审查上下文，再直接阅读相关 diff、历史和受影响文件，完成审查。必要时分阶段检查大 diff，但不要跳过任何一段。
+派发一个 `general-purpose` subagent，填写 [code-reviewer.md](code-reviewer.md) 中的模板，
+整理审查上下文，再直接阅读相关 diff、历史和受影响文件，完成审查。必要时分阶段检查大 diff，但不要跳过任何一段。
 
 **占位符：**
 - `{DESCRIPTION}` - 对已完成内容的简短总结
@@ -55,13 +56,13 @@ HEAD_SHA=$(git rev-parse HEAD)
 BASE_SHA=$(git log --oneline | grep "Task 1" | head -1 | awk '{print $1}')
 HEAD_SHA=$(git rev-parse HEAD)
 
-[整理审查上下文]
+[派发代码审查subagent整理审查上下文]
   DESCRIPTION: 添加了 verifyIndex() 和 repairIndex()，支持 4 类问题
   PLAN_OR_REQUIREMENTS: docs/superpowers/plans/deployment-plan.md 中的任务 2
   BASE_SHA: a7981ec
   HEAD_SHA: 3df7661
 
-[完成审查：]
+[subagent完成审查返回：]
   优点：架构清晰，使用真实测试
   问题：
     Important：缺少进度指示器

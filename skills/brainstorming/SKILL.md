@@ -162,7 +162,7 @@ digraph brainstorming {
 
 - 将已验证的设计（规格）写入 `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
   -（用户对规格位置的偏好优先于此默认值）
-- 如可用，使用 elements-of-style:writing-clearly-and-concisely 技能
+- 使用 superpowers-cn:writing-style 技能
 - 将设计文档提交到 git
 
 **规格自审：**

@@ -27,8 +27,8 @@ description: 在会话开始时使用；在任何回复或操作前检查并调�
 
 当多个技能同时适用时，流程技能优先——它们决定方法，然后再调用实现技能（frontend-design 等）。Brainstorming 和 systematic-debugging 是 Superpowers 最常见的流程技能，但这个规则对任何技能都适用。
 
-- “Let's build X” → 先用 superpowers-cn:brainstorming，然后再用实现技能。
-- “Fix this bug” → 先用 superpowers-cn:systematic-debugging，然后再用领域技能。
+- “开发 xx ” → 先用 superpowers-cn:brainstorming，然后再用实现技能。
+- “解决这个bug” → 先用 superpowers-cn:systematic-debugging，然后再用领域技能。
 - 如果判断需要使用 `test-driven-development`，先向用户说明为什么要用它，并提供“先按 TDD 走”与“直接实现”这类选择；获得确认后再调用，不要直接进入。
 
 ## 红旗
