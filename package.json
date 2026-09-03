@@ -1,6 +1,6 @@
 {
   "name": "superpowers-cn",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "面向 coding agent 的 Superpowers 技能库与软件开发方法论",
   "type": "module",
   "main": ".opencode/plugins/superpowers.js",

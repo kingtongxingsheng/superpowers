@@ -74,7 +74,7 @@ Superpowers 是一套面向 coding agent 的完整软件开发方法论，建立
 agy plugin install https://github.com/kingtongxingsheng/superpowers
 ```
 
-Antigravity 会运行插件的 session-start hook，因此 Superpowers 从第一条消息开始就处于可用状态。更新时使用相同命令重新安装。
+Antigravity 会加载插件中的技能，更新时使用相同命令重新安装。
 
 ### Codex App
 
@@ -194,7 +194,7 @@ pi install git:github.com/kingtongxingsheng/superpowers
 pi -e /path/to/superpowers
 ```
 
-Pi package 会加载 Superpowers 技能和一个小型扩展，在会话启动及压缩后注入 `using-superpowers` bootstrap。Pi 原生支持技能，因此不需要兼容性的 `Skill` 工具。子代理和任务列表工具仍然是可选的 Pi companion packages。
+Pi package 会加载 Superpowers 技能和一个小型扩展。Pi 原生支持技能，因此不需要兼容性的 `Skill` 工具。子代理和任务列表工具仍然是可选的 Pi companion packages。
 
 ### Hermes Agent
 
@@ -204,7 +204,7 @@ Pi package 会加载 Superpowers 技能和一个小型扩展，在会话启动�
 hermes plugins install kingtongxingsheng/superpowers --enable
 ```
 
-安装后重启所有正在运行的 Hermes 会话。注意：Hermes 没有 post-compaction hook，因此很长的会话如果在第一轮之后发生压缩，会丢失 bootstrap；如果技能停止触发，请启动新会话。
+安装后重启所有正在运行的 Hermes 会话。
 
 ## 基本工作流
 
@@ -252,7 +252,6 @@ Superpowers 由 [Jesse Vincent](https://blog.fsck.com) 和 [Prime Radiant](https
 
 **元技能**
 - **writing-skills** - 按最佳实践创建技能（包含测试方法）
-- **using-superpowers** - 技能系统简介
 
 ## 理念
 

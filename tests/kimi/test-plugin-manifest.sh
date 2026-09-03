@@ -23,12 +23,6 @@ def assert_present(text, needle, label):
 
 assert_equal(manifest.get("name"), "superpowers", "plugin name")
 assert_equal(manifest.get("skills"), "./skills/", "skills path")
-assert_equal(
-    manifest.get("sessionStart", {}).get("skill"),
-    "using-superpowers",
-    "sessionStart.skill",
-)
-
 instructions = manifest.get("skillInstructions")
 if not isinstance(instructions, str) or not instructions.strip():
     raise AssertionError("skillInstructions must be a non-empty string")

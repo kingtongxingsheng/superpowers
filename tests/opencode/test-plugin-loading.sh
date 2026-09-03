@@ -42,17 +42,9 @@ else
     exit 1
 fi
 
-# Test 3: Check using-superpowers skill exists (critical for bootstrap)
-echo "Test 3: Checking using-superpowers skill (required for bootstrap)..."
-if [ -f "$SUPERPOWERS_SKILLS_DIR/using-superpowers/SKILL.md" ]; then
-    echo "  [PASS] using-superpowers skill exists"
-else
-    echo "  [FAIL] using-superpowers skill not found (required for bootstrap)"
-    exit 1
-fi
-
+# Test 3: Verify plugin JavaScript syntax
 # Test 4: Verify plugin JavaScript syntax (basic check)
-echo "Test 4: Checking plugin JavaScript syntax..."
+echo "Test 3: Checking plugin JavaScript syntax..."
 if node --check "$SUPERPOWERS_PLUGIN_FILE" 2>/dev/null; then
     echo "  [PASS] Plugin JavaScript syntax is valid"
 else

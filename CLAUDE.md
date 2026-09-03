@@ -73,8 +73,6 @@ Superpowers 核心包含对所有用户都适用的通用技能。针对特定�
 
 如果 PR 为新的 harness（IDE、CLI 工具或 agent runner）添加支持，必须提供证明端到端集成可工作的会话记录。
 
-真实集成会在会话开始时加载 `using-superpowers` bootstrap。bootstrap 负责让技能在正确时机自动触发。没有它，技能文件只存在于磁盘上，却不会被调用。
-
 **验收测试。**在新 harness 中开启干净会话，并精确发送以下用户消息：
 
 > Let's make a react todo list

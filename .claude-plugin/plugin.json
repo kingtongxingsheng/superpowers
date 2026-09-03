@@ -1,13 +1,13 @@
 {
   "name": "superpowers-cn",
-"description": "Claude Code 的核心技能库：TDD、调试、协作模式和经过验证的技术",
-"version": "1.0.3",
+  "description": "Claude Code 的核心技能库：TDD、调试、协作模式和经过验证的技术",
+  "version": "1.0.4",
   "author": {
     "name": "Jesse Vincent",
     "email": "jesse@fsck.com"
   },
-"homepage": "https://github.com/kingtongxingsheng/superpowers",
-"repository": "https://github.com/kingtongxingsheng/superpowers",
+  "homepage": "https://github.com/kingtongxingsheng/superpowers",
+  "repository": "https://github.com/kingtongxingsheng/superpowers",
   "license": "MIT",
   "keywords": [
     "skills",

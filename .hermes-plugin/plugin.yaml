@@ -1,5 +1,5 @@
 name: superpowers
-version: 1.0.3
+version: 1.0.4
 description: 面向 Hermes Agent 的 Superpowers 技能与工作流 bootstrap
 author: obra
 provides_hooks:
